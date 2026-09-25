@@ -25,7 +25,75 @@
             </nav>
 
             <main class="content">
+                <header>
+                    <h1>Settings</h1>
+                    <p>Hey, <span id="username-display">username</span>!</p>
+                    <p>Check them out!</p>
+                </header>
+
+                <!--//SECTION user profile-->
+                <section class="profile">
+                    <h2>Your Profile</h2>
+                    <input type="text" name="username" id="username-input" placeholder="[Your name here]">
+                    
+                    <!--//NOTE - Need to make it so this is autofilled when joining a class.-->
+                    <div class="class=info">
+                        <p>Class: <span id="class-value" data-source="admin-join">{ICD20-02}</span></p>
+                        <p>Grade: <span id="grade-value" data-source="admin-join">{x}</span></p>
+                    </div>
+                </section>
                 
+                <!--//NOTE - mini little script for username-->
+                <script> 
+                    const usernameInput = document.getElementById('username-input');
+                    const usernameDisplay = document.getElementById('username-display');
+
+                    usernameInput.addEventListener('keydown', (event) => {
+                        if (event.key === 'Enter') {
+                            event.preventDefault();
+                            const username = usernameInput.value.trim();
+                            if (username) {
+                                usernameDisplay.textContent = username;
+                            }
+                        }
+                    });
+                </script>
+
+                <!--//SECTION - IDE themes and what not-->
+                <section class="ide-settings">
+                    <h2>IDE Settings</h2>
+                    <div class="ide-settings-columns">
+                        <div class="font-sizing">
+                            <h3>Font and Sizing</h3>
+
+                            <label for="font-size">Font size (px)</label>
+                            <select id="font-size" name="font-size">
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15" selected>15</option>
+                                <option value="16">16</option>
+                                <option value="18">18</option>
+                                <option value="20">20</option>
+                                <option value="24">24</option>
+                            </select>
+
+                            <label>
+                                <input type="checkbox" name="hi-contrast">
+                                Hi-Contrast
+                            </label>
+
+                            <h3>Line indentation (sp)</h3>
+                            <label for="line-indent">Spaces</label>
+                            <select id="line-indent" name="line-indent">
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="4">4</option>
+                                <option value="8">8</option>
+                            </select>                       
+                    </div>
+                </section>
+
             </main>
         </div>
     </body>
